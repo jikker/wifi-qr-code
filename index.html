@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WiFi QR Code</title>
+    <style>
+        /* 設置頁面的布局 */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column; /* 讓內容縱向排列 */
+            align-items: center; /* 水平居中 */
+        }
+        #qrcode {
+            margin-top: 50px; /* 調整QR Code距離頁面頂部的距離 */
+        }
+    </style>
+</head>
+<body>
+    <div id="qrcode"></div>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script>
+        var ssid = 'DTRI_wireless';
+        var password = 'iii_05076416+DTRI';
+        var encryption = 'WPA';
+
+        var wifiInfo = `WIFI:S:${ssid};T:${encryption};P:${password};;`;
+
+        // 生成一個較大的QR Code，可以通過設置width和height屬性來調整大小
+        new QRCode(document.getElementById("qrcode"), {
+            text: wifiInfo,
+            width: 512, // 設置QR Code的寬度
+            height: 512, // 設置QR Code的高度
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    </script>
+</body>
+</html>
