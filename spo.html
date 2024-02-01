@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WiFi QR Code</title>
+    <style>
+        /* 設置頁面的布局 */
+        body, html {
+            height: 100%;
+            margin: 0;
+            display: flex;
+            flex-direction: column; /* 讓內容縱向排列 */
+            align-items: center; /* 水平居中 */
+        }
+        #qrcode {
+            margin-top: 20px; /* 調整QR Code距離文字的距離 */
+        }
+        .header {
+            margin-top: 20px; /* 調整文字距離頁面頂部的距離 */
+            font-size: 24px; /* 文字大小 */
+            font-weight: bold; /* 文字加粗 */
+        }
+    </style>
+</head>
+<body>
+    <div class="header">SPO</div>
+    <div id="qrcode"></div>
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
+    <script>
+        var ssid = 'SPO-KCCC';
+        var password = '05076416';
+        var encryption = 'WPA';
+
+        var wifiInfo = `WIFI:S:${ssid};T:${encryption};P:${password};;`;
+
+        new QRCode(document.getElementById("qrcode"), {
+            text: wifiInfo,
+            width: 512,
+            height: 512,
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel.H
+        });
+    </script>
+</body>
+</html>
