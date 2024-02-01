@@ -12,11 +12,17 @@
             align-items: center; /* 水平居中 */
         }
         #qrcode {
-            margin-top: 50px; /* 調整QR Code距離頁面頂部的距離 */
+            margin-top: 20px; /* 調整QR Code距離文字的距離 */
+        }
+        .header {
+            margin-top: 20px; /* 調整文字距離頁面頂部的距離 */
+            font-size: 24px; /* 文字大小 */
+            font-weight: bold; /* 文字加粗 */
         }
     </style>
 </head>
 <body>
+    <div class="header">DTRI</div>
     <div id="qrcode"></div>
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
     <script>
@@ -26,11 +32,10 @@
 
         var wifiInfo = `WIFI:S:${ssid};T:${encryption};P:${password};;`;
 
-        // 生成一個較大的QR Code，可以通過設置width和height屬性來調整大小
         new QRCode(document.getElementById("qrcode"), {
             text: wifiInfo,
-            width: 512, // 設置QR Code的寬度
-            height: 512, // 設置QR Code的高度
+            width: 256,
+            height: 256,
             colorDark : "#000000",
             colorLight : "#ffffff",
             correctLevel : QRCode.CorrectLevel.H
